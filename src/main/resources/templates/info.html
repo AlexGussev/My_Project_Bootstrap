@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>All Users</title>
+    <title>User info</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
@@ -14,7 +14,9 @@
 <body>
 
 <nav class="navbar navbar-dark bg-dark">
-    <a class="text-light" th:text="${user.username} + ' with roles ' + ${user.roles}" />
+    <div class="col-md-6 text-left px-3 py-2"  style="color: beige">
+        <span id="loginInfo" class="font-weight-bold m-0 p-0"></span> with roles: <span id="rolesInfo" class="text-uppercase m-0 p-0"></span>
+    </div>
     <a class="btn btn-outline-secondary my-2 my-sm-0" href="/logout">Sign out</a>
 </nav>
 <div class="container-fluid h-100">
@@ -34,13 +36,13 @@
 
 
         <div class="col-md-10" style="background-color: #fffbfb">
-            <h2>All users</h2>
+            <h2>User Info</h2>
             <div class="card">
                 <div class="card-body" style="background-color: #efefef">
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>FirstName</th>
                             <th>LastName</th>
                             <th>Age</th>
                             <th>Email</th>
@@ -48,19 +50,7 @@
                             <th>Role</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td scope="row" th:utext="${user.name}"></td>
-                            <td th:utext="${user.lastName}"></td>
-                            <td th:utext="${user.age}"></td>
-                            <td th:utext="${user.email}"></td>
-                            <td th:utext="${user.username}"></td>
-                            <td>
-                                <ul th:each="role : ${user.roles}">
-                                    <li th:text="${role.name}">Role</li>
-                                </ul>
-                            </td>
-                        </tr>
+                        <tbody id="userInfo"></tbody>
                         </tbody>
                     </table>
                 </div>
@@ -74,14 +64,10 @@
 
 
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="user.js"></script>
 </body>
 </html>

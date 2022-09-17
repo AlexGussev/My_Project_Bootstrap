@@ -6,8 +6,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.alexgussev.entity.Role;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
     @Query("select r from Role r where lower(r.name) like :role")
     Role findRoleByName(@Param("role") String role);
+
 }
